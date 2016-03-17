@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Summary</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<p>Data collected as part of &ldquo;Decisions about chocolate are
+processed differently than decisions on gambles: Evidence from eye-tracking&rdquo; by Betty E. Kim-Viechnicki.</p>
+
+<ul>
+<li>Kim-Viechnicki, B.E., Burla, Y., Feit, E., Plassmann, H.,&amp; Kable, J.W. (2013, September). Decisions about chocolate are
+processed differently than decisions on gambles: Evidence from eye-tracking. Poster session at the annual meeting of the
+Society of Neuroeconomics, Lausanne, Switzerland.</li>
+</ul>
+
+<h1>Summary</h1>
+
+<p>A conjoint analysis was conducted to help understand how consumers make choices regarding chocolate purchases.  Participants to a survey responded to questions such as the following:</p>
+
+<p><img src="http://goo.gl/6lG43O" alt="Caption for the picture."/></p>
+
+<p>Each trial had three alternatives to choose from consisting of a brand and type of a chocolate and the corresponding price.  In addition to the type of chocolate, the number of times each respondent fixated over one of the attributes was recorded.  Using this data we are able to answer the question of what attributes of chocolate to consumers consider most important in their purchsing decision.</p>
+
+<h2>Key Takeaways</h2>
+
+<ul>
+<li>Godiva has the strongest brand closely followed by Lindt</li>
+<li>Chocolate with dark nuts would gain approximately 30% of the market share</li>
+<li>Consumrs generally like chocolate unter $3 and especially under $2</li>
+<li>Most decisions are made after 5 fixations.
+
+<ul>
+<li>Respondents looked at price less than brand or type</li>
+</ul></li>
+</ul>
+
+<h4>Chocolate chosen by brand</h4>
+
+<p>&lt;!&ndash;html_preserve&ndash;&gt;<div id="htmlwidget-4619" style="width:504px;height:504px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4619">{&quot;x&quot;:{&quot;data&quot;:[{&quot;type&quot;:&quot;bar&quot;,&quot;inherit&quot;:true,&quot;x&quot;:[&quot;Dove&quot;,&quot;Ghirardelli&quot;,&quot;Godiva&quot;,&quot;Hershey&quot;,&quot;Lindt&quot;],&quot;y&quot;:[66,78,99,45,62],&quot;filename&quot;:&quot;r-docs/knitr-example&quot;}],&quot;layout&quot;:{&quot;title&quot;:&quot;Chosen by Brand&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;Brand&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Number Chosen&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;margin&quot;:{&quot;b&quot;:40,&quot;l&quot;:60,&quot;t&quot;:25,&quot;r&quot;:10}},&quot;url&quot;:null,&quot;width&quot;:null,&quot;height&quot;:null,&quot;base_url&quot;:&quot;<a href="https://plot.ly%22,%22filename%22:%22r-docs/knitr-example%22,%22layout.1%22:%7B%22title%22:%22Chosen">https://plot.ly&quot;,&quot;filename&quot;:&quot;r-docs/knitr-example&quot;,&quot;layout.1&quot;:{&quot;title&quot;:&quot;Chosen</a> by Brand&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;Brand&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Number Chosen&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}}}},&quot;evals&quot;:[],&quot;jsHooks&quot;:[]}</script>&lt;!&ndash;/html_preserve&ndash;&gt;</p>
+
+<h4>Chocolates chosen by type</h4>
+
+<p>&lt;!&ndash;html_preserve&ndash;&gt;<div id="htmlwidget-6554" style="width:504px;height:504px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6554">{&quot;x&quot;:{&quot;data&quot;:[{&quot;type&quot;:&quot;bar&quot;,&quot;inherit&quot;:true,&quot;x&quot;:[&quot;Dark&quot;,&quot;DarkNuts&quot;,&quot;Milk&quot;,&quot;MilkNuts&quot;,&quot;White&quot;],&quot;y&quot;:[99,73,84,68,26]}],&quot;layout&quot;:{&quot;title&quot;:&quot;Chosen by Type&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;Type&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Number Chosen&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;margin&quot;:{&quot;b&quot;:40,&quot;l&quot;:60,&quot;t&quot;:25,&quot;r&quot;:10}},&quot;url&quot;:null,&quot;width&quot;:null,&quot;height&quot;:null,&quot;base_url&quot;:&quot;<a href="https://plot.ly%22,%22layout.1%22:%7B%22title%22:%22Chosen">https://plot.ly&quot;,&quot;layout.1&quot;:{&quot;title&quot;:&quot;Chosen</a> by Type&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;Type&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Number Chosen&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}}},&quot;filename&quot;:&quot;Chosen by Type&quot;},&quot;evals&quot;:[],&quot;jsHooks&quot;:[]}</script>&lt;!&ndash;/html_preserve&ndash;&gt;</p>
+
+<h4>Chocolates that were chosen and not chosen by price</h4>
+
+<p>&lt;!&ndash;html_preserve&ndash;&gt;<div id="htmlwidget-4139" style="width:504px;height:504px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-4139">{&quot;x&quot;:{&quot;data&quot;:[{&quot;type&quot;:&quot;histogram&quot;,&quot;inherit&quot;:true,&quot;x&quot;:[0.6,3.9,3.7,1,1.5,2.6,2.1,1.1,1.7,0.8,1.6,3.7,3,3.5,3.7,3.8,3.9,2.8,3.7,1.9,3,0.9,0.6,3.2,2,2.1,3.5,1.8,2.5,1.3,0.7,0.9,1.3,3.4,1.1,2.9,2.8,2.5,3.4,0.7,0.6,4,2.5,2.9,0.9,0.6,2.8,3.2,3.8,2.3,1,2.2,1.2,1.3,1,0.8,1.4,2.2,1.2,0.9,1.7,3.3,1,2.6,2.7,2.5,0.5,2.2,2.2,0.6,2.5,1.1,0.7,1.4,1.7,2.6,4,1.7,1.4,3,3.9,0.7,0.6,2.7,1.4,2.5,1.7,1.8,0.9,3.9,1.1,2.4,3.9,2.9,3.4,3.5,1.6,0.6,2.5,2,2.4,2,0.6,3,3.6,0.8,2.4,2.4,1.8,1,0.6,1.1,2,0.6,1.1,1.6,0.9,0.8,2.9,0.9,2.2,3.3,1.5,0.5,1,3.8,0.9,1.5,2.9,1.1,1.4,2.6,0.5,2.2,2.4,2.5,3,3.2,1.3,3.6,0.5,2.3,1,0.8,3,1.7,3.5,0.6,1.1,0.7,0.7,3.9,3.7,1,1.5,2.6,3.1,1.1,1.7,3.7,1.6,3.7,1.9,3.5,1.5,3.8,3.9,2.6,2.8,0.7,3,0.9,3.4,1.4,0.8,1,3.5,1.2,1.3,3.5,2.5,1.4,2.9,1.4,0.9,1.7,3.3,1,2.6,3,3,0.6,2.2,4,3.2,2.5,1.1,0.7,2.2,1.7,2.1,1.3,1.6,0.8,1.3,3.3,0.8,1.3,3.4,3.8,2.1,0.6,2.5,1.8,0.7,0.6,2.7,2.5,1.2,1.8,2.1,2.8,3.2,1.8,1.3,0.5,2.6,1.7,0.9,3.5,3.5,0.6,1.4,2.7,3.4,2.7,3,0.5,1,0.6,1.4,2.3,1.3,0.5,1,1.2,0.7,3.5,1.7,3,3.9,0.9,1.7,1.4,3,2.5,0.7,0.6,2.3,1.4,2,0.6,1.8,1.3,2.9,2.1,2.4,1.9,2.9,3.4,3.5,1.6,0.6,0.8,2.5,3.7,3.8,1.3,1.4,1.6,3.7,3.6,1.4,1.3,2.2,1.9,1.7,1.9,3.4,3,3.1,1.9,1.3,1.8,3.3,2.8,2,3.5,3.3,3,3,2,0.6,1.3,3.7,0.8,2.4,3.7,3.9,3.7,3.3,1.3,2,1.9,1.2,3.3,2.8,0.8,3.3,0.9,3.3,3.3,2.8,1.4,2.2,0.6,2.7,1.7,0.5,1.5,2.6,2.1,1.1,1.7,0.8,1.2,1.1,0.8,0.6,1.5,0.5,1.2,2.7,2.8,0.7,0.8,0.9,0.6,1.4,2],&quot;opacity&quot;:0.6,&quot;name&quot;:&quot;Chosen&quot;},{&quot;type&quot;:&quot;histogram&quot;,&quot;inherit&quot;:true,&quot;x&quot;:[0.7,3.6,2.7,0.7,1.7,3,3.6,0.5,0.8,3.3,3.1,2.5,3.1,4,0.8,3.2,2.3,3.8,0.6,3.7,0.7,1.2,1.1,0.8,0.8,1.9,0.6,1.9,1.5,1.6,0.5,3.7,1.2,0.5,2.7,2.6,4,2.8,0.7,0.8,0.8,2.4,3.4,3.4,1.8,3.4,3.6,1.4,1.1,0.8,2.2,3.5,1.3,1.7,1.6,2,3.2,0.8,1.1,2.7,0.6,3.3,2.9,0.8,2,1.2,1.8,3.1,1.6,3.8,2.1,1.4,1,0.6,0.9,1.9,1.8,3.2,0.6,2.9,2.3,0.8,2.7,1.3,2.1,1.1,1.2,1.5,1.8,3.2,1.5,2.1,3.7,2.2,4,2.4,0.9,1.8,1.3,2.5,1.4,2,3.5,2.2,3.9,2.2,0.7,3.3,2.8,3.5,1.3,2.5,2.1,3.1,2.9,3,2.5,1.4,2.5,3.2,3.7,1.4,3.7,2.3,3.8,3.5,2.8,2.8,3,3,3,3.9,0.6,3.4,3.6,3.8,4,2.9,3.2,2,3.4,2.5,3,3.8,2.2,2.7,3.3,2.2,2.3,2.7,3.9,2.7,0.9,3.3,3.6,1.6,2.4,3.8,2.9,1.6,2.5,2.6,2.9,0.7,3.3,1.1,2.3,2.6,2.5,1.5,1.5,2,2.5,0.6,3.3,2.8,3.5,1.3,2.6,2.9,1.9,2.1,2.9,3.9,3.4,1.9,3.4,1.3,3.5,0.7,3,1.8,1.8,3.6,1.5,1.3,0.8,2.1,3.6,2.5,3,2.5,2.9,1.9,2.3,0.9,1.3,1.3,3.7,3.6,4,2.5,2.5,2.3,1.8,3.7,3.9,1.9,3.7,1.1,3.3,3.3,1.6,1.3,3.5,3.7,1.9,3,3,1.2,3.3,1.4,3.3,2.8,3.5,2,3.3,3.1,1.2,1.5,3.3,1.9,3.4,3.8,2.8,2.5,1.1,1.4,0.9,2.2,2,2.2,0.8,2.7,2.6,3.4,0.5,1.5,3.9,1.5,1.5,2.5,3.4,1.4,0.8,1.1,0.6,1.1,3.2,2.9,4,3.5,2,1,1.1,1,2,1.3,3.1,3.7,1,4,2.5,3.5,3.3,2.4,1.6,1.1,3.2,2.2,1.3,2.4,2.3,3.5,0.9,3,1.2,1.4,3.8,0.9,0.6,3.6,2.7,0.7,1.7,3,3.6,0.5,0.8,3.3,3.1,2.5,4,2.1,0.8,3.2,2.3,3.8,0.6,0.8,0.7,1.2,1.1,0.8,3,0.8,0.6,1.9,3.7,1.6,0.5,3.7,1.2,0.5,2.8,2.7,3.7,4,0.8,1.9,0.8,2.4,3.4,3.4,0.6,1.8,3.6,3.2,1.1,2,1.4,2,2.2,2.2,3.9,2.2,0.7,3.3,2.8,1,1.3,0.8,2.1,3.1,3,2.2,1.2,2.5,2.5,3.2,3.7,1.4,3.7,2.3,3.8,3.5,2.8,2.8,2.7,3,2.5,3.9,0.5,3.4,3.6,3.8,2.2,2.9,0.6,2,3.4,2.5,3,3.8,2.2,2.7,1.4,3.3,2.3,2.7,2.2,3.5,1.7,3.5,2,1.8,3.2,2.5,1.1,2.7,0.7,0.6,0.9,2.9,2,1.2,1.8,3.1,1.1,1.6,2.9,1.4,1,2.8,0.9,1.9,3.4,3.2,0.6,2.9,2.3,0.8,4,1.3,2.1,1.1,2.9,1.5,3.2,0.9,1.5,0.6,3.7,2.2,4,2.4,0.9,3.8,2.3,2.5,1.8,2.6,1.9,3.4,2.7,1,0.9,0.8,3.3,1.3,3.2,3.9,0.5,3.8,1.2,3.1,1.3,1.5,3.8,1.7,0.6,0.9,1.1,0.7,1.5,3.1,1,0.8,2.2,3.7,2.4,3.4,1.6,2.6,1.5,3,1,2.5,1,3.5,2.4,2.4,3.2,2.9,2.8,2.3,1.4,3.9,3.6,3.1,2.6,2.7,3.3,4,3.6,1.6,2.4,3.8,2.9,1.6,2.6,3.9,2.9,0.7,3.3,1.1,2.7,2.6,2.5,1.5,1.5,2.5,1.7,2.5,3.3,2.8,3.5,0.9,2.6,3.9,1.1,1.9,2.9,3.9,3.4,3.9,3.4,1.3,3.5,0.7,3,1.8,1.8,3.6,1.5,1.3,2.5,2.1,3.6,2,3.4,2.8,4,1.3,3,3.6,1.4,2.5,0.7,1.6,3.6,2.1,3.5,2.9,1.2,1.7,3.8,2,2.8,0.8,1.7,3.4,3.1,3.1,0.6,0.5,2.9,3.4,0.9,2,3.6,3.6,3.9,2.8,3.5,0.7,2.2,0.7,0.6,1.7,2.1,2.6,2.6,2.4,2.4,3.9,0.6,2.6,3.3,2.1,2.5,2.4,2.9,1.9,2.3,0.9,1.3,3,3.6,3.6,4,2.5,2.5,2.3,2.4,1.8,1.9,1.8,1.1,1,3.3,0.6,1.6,1.1,3.5,3.7,3,0.6,3,1.1,1.6,1.4,3.3,0.9,3.5,2,3.1,2.9,1.2,1.5,2.2,1.9,3.4,3.8,1.5,2.5,0.5,1.1,0.9,1,0.7,3.6,3.9,0.7,3.7,3,1,3.6,0.8,3.3,3.1,2.5,3.1,4,0.8,3.2,2.3,3.8,0.6,3.7,1.6,0.7,0.8,3.7,3,1.9,3.5,1.9,3.7,1.6,3.8,3.7,3.9,0.5,2.8,2.6,3.7,4,0.8,1.9,3,2.4,3.4,3.4,1.8,3.4,3.6,3.2,1.1,0.8],&quot;opacity&quot;:0.6,&quot;name&quot;:&quot;Not Chosen&quot;}],&quot;layout&quot;:{&quot;barmode&quot;:&quot;overlay&quot;,&quot;title&quot;:&quot;Chosen and Not Chosen Price Histograms&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;chosenPrices&quot;},&quot;margin&quot;:{&quot;b&quot;:40,&quot;l&quot;:60,&quot;t&quot;:25,&quot;r&quot;:10}},&quot;url&quot;:null,&quot;width&quot;:null,&quot;height&quot;:null,&quot;base_url&quot;:&quot;<a href="https://plot.ly%22,%22layout.1%22:%7B%22barmode%22:%22overlay%22,%22title%22:%22Chosen">https://plot.ly&quot;,&quot;layout.1&quot;:{&quot;barmode&quot;:&quot;overlay&quot;,&quot;title&quot;:&quot;Chosen</a> and Not Chosen Price Histograms&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;chosenPrices&quot;}},&quot;filename&quot;:&quot;Chosen and Not Chosen Price Histograms&quot;},&quot;evals&quot;:[],&quot;jsHooks&quot;:[]}</script>&lt;!&ndash;/html_preserve&ndash;&gt;</p>
+
+<h4>Fixations by attribute</h4>
+
+<p>&lt;!&ndash;html_preserve&ndash;&gt;<div id="htmlwidget-3643" style="width:504px;height:504px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3643">{&quot;x&quot;:{&quot;data&quot;:[{&quot;type&quot;:&quot;bar&quot;,&quot;inherit&quot;:true,&quot;x&quot;:[&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;14&quot;,&quot;18&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;14&quot;,&quot;18&quot;],&quot;y&quot;:[43,65,77,53,52,29,14,7,3,3,1,1,1,0,1],&quot;opacity&quot;:0.6,&quot;name&quot;:&quot;Brand&quot;},{&quot;type&quot;:&quot;bar&quot;,&quot;inherit&quot;:true,&quot;x&quot;:[&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;18&quot;,&quot;20&quot;,&quot;25&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;8&quot;,&quot;9&quot;,&quot;10&quot;,&quot;11&quot;,&quot;12&quot;,&quot;13&quot;,&quot;14&quot;,&quot;15&quot;,&quot;18&quot;,&quot;20&quot;,&quot;25&quot;],&quot;y&quot;:[24,30,51,69,58,40,24,19,11,5,6,3,5,1,2,0,1,1,0],&quot;opacity&quot;:0.6,&quot;name&quot;:&quot;Type&quot;},{&quot;type&quot;:&quot;bar&quot;,&quot;inherit&quot;:true,&quot;x&quot;:[&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;,&quot;0&quot;,&quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,&quot;5&quot;,&quot;6&quot;,&quot;7&quot;],&quot;y&quot;:[93,122,71,41,15,4,3,1],&quot;opacity&quot;:0.6,&quot;name&quot;:&quot;Price&quot;}],&quot;layout&quot;:{&quot;barmode&quot;:&quot;stack&quot;,&quot;title&quot;:&quot;Chosen by Price_Fix&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;Brand_Fix&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Number Chosen&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;margin&quot;:{&quot;b&quot;:40,&quot;l&quot;:60,&quot;t&quot;:25,&quot;r&quot;:10}},&quot;url&quot;:null,&quot;width&quot;:null,&quot;height&quot;:null,&quot;base_url&quot;:&quot;<a href="https://plot.ly%22,%22layout.1%22:%7B%22barmode%22:%22stack%22,%22title%22:%22Chosen">https://plot.ly&quot;,&quot;layout.1&quot;:{&quot;barmode&quot;:&quot;stack&quot;,&quot;title&quot;:&quot;Chosen</a> by Price_Fix&quot;,&quot;xaxis&quot;:{&quot;title&quot;:&quot;Brand_Fix&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}},&quot;yaxis&quot;:{&quot;title&quot;:&quot;Number Chosen&quot;,&quot;titlefont&quot;:{&quot;family&quot;:&quot;Arial, sans&quot;,&quot;size&quot;:18,&quot;color&quot;:&quot;#7f7f7f&quot;}}},&quot;filename&quot;:&quot;Chosen by Price_Fix&quot;},&quot;evals&quot;:[],&quot;jsHooks&quot;:[]}</script>&lt;!&ndash;/html_preserve&ndash;&gt;</p>
+
+<h2>Multinomial Logistic Model</h2>
+
+<h3>mlogit()</h3>
+
+<p>Using the mlogit() function in R, we were able to implement a multinomial logistic model with our dataset.  This model differs from a general logistic model in that it considers the choices of a respondent in each trial.  </p>
+
+<pre><code class="r">m.atr.int &lt;- mlogit(Chosen ~ 0 + Price + brand + type , data=data.mlogit)
+summary(m.atr.int)
+</code></pre>
+
+<pre><code>## 
+## Call:
+## mlogit(formula = Chosen ~ 0 + Price + brand + type, data = data.mlogit, 
+##     method = &quot;nr&quot;, print.level = 0)
+## 
+## Frequencies of alternatives:
+##   pos 1   pos 2   pos 3 
+## 0.37429 0.32571 0.30000 
+## 
+## nr method
+## 5 iterations, 0h:0m:0s 
+## g&#39;(-H)^-1g = 6.86E-06 
+## successive function values within tolerance limits 
+## 
+## Coefficients :
+##                   Estimate Std. Error t-value  Pr(&gt;|t|)    
+## Price            -0.309299   0.071385 -4.3329 1.472e-05 ***
+## brandGhirardelli  0.483377   0.220133  2.1958  0.028103 *  
+## brandGodiva       0.534987   0.205608  2.6020  0.009269 ** 
+## brandHershey     -0.453002   0.233326 -1.9415  0.052199 .  
+## brandLindt       -0.150753   0.225934 -0.6672  0.504617    
+## typeDarkNuts     -0.317797   0.208215 -1.5263  0.126937    
+## typeMilk          0.096331   0.215219  0.4476  0.654446    
+## typeMilkNuts     -0.501818   0.219496 -2.2862  0.022241 *  
+## typeWhite        -1.711444   0.261160 -6.5532 5.630e-11 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Log-Likelihood: -327.23
+</code></pre>
+
+<p>The results of the mlogit show the part worth estimates.  The estimate is listed for each level along with the standard error.  In this model, price is a continuous variable and the intercepts are not included. The estimates are interpreted relative to the base levels.  For instance, our data suggests that Godiva is a significant predictor of whether a chocolate will be chosen, and all else remaining equal will be chosen more often than Dove. Likewise, white chocolate is also a significant predictor and all else remaining equal will be chosen less often than dark chocolate.</p>
+
+<h3>Choice Shares</h3>
+
+<p>Choice shares allow us to compare alternatives and predict the anticipated market share each alternative will obtian. For example, if we decide our product to be Hershey&#39;s Milk Chocolate priced at $2.00, and our competitors will carry their respective products, what will our market share be.  </p>
+
+<p>Using the following alternatives the choice shares are calculated.</p>
+
+<pre><code class="r">m.atr &lt;- mlogit(Chosen ~ 0 + Price + brand + type , data=data.mlogit)
+
+
+new.data &lt;- expand.grid(atr)[c(400,633,764,346,502),]
+expand.grid(atr)[c(400,633,764,346,502),]
+</code></pre>
+
+<pre><code>##           brand     type Price
+## 400     Hershey     Milk   2.0
+## 633      Godiva     Dark   3.0
+## 764 Ghirardelli DarkNuts   3.5
+## 346        Dove     Milk   1.8
+## 502       Lindt MilkNuts   2.5
+</code></pre>
+
+<pre><code class="r">p.mnl &lt;- predict.mnl(m.atr,new.data)
+ggplot(p.mnl , aes(x=brand , y=share)) +
+          geom_point() 
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-9"/></p>
+
+<p>In this example, given the 5 choices listed above, Lindt is expected to gain the most market share of 42% and Dove the least with 3% of market share.</p>
+
+<h3>Attribute Sensitivity</h3>
+
+<p>Sensitivity analysis allows us to estimate how market share would change if changes were make to the product, given our data and competitors.  For example, if we wanted to explore making dark chocolate for the first time, what could we expect as an increase to market share. </p>
+
+<p>For each level used in the experiment, this graphic shows how the base line product:</p>
+
+<pre><code class="r">expand.grid(atr)[c(1),]
+</code></pre>
+
+<pre><code>##   brand     type Price
+## 1  Dove MilkNuts   0.5
+</code></pre>
+
+<p>would change given what the competitors are doing:</p>
+
+<pre><code class="r">expand.grid(atr)[c(58,64,21,27,10),]
+</code></pre>
+
+<pre><code>##          brand     type Price
+## 58      Godiva     Dark   0.7
+## 64 Ghirardelli DarkNuts   0.7
+## 21        Dove     Milk   0.5
+## 27       Lindt MilkNuts   0.6
+## 10     Hershey     Dark   0.5
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-12"/></p>
+
+</body>
+
+</html>
