@@ -1,6 +1,11 @@
+### Contents
+ * [Summary](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary.md)
+ * [Exploring the data](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_exploring.md)
+ * [Multinomial Logistic Model](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis.md)
+ * [RShiny Visual Tool](https://pawelb.shinyapps.io/chocolate_slider/)
+
+
 # Chocolate Eye Tracking Analysis
-Pawel Bogdanowicz  
-March 2016  
 
 Data collected as part of "Decisions about chocolate are
 processed differently than decisions on gambles: Evidence from eye-tracking" by Betty E. Kim-Viechnicki.
