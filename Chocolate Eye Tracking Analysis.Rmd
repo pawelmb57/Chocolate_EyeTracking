@@ -1,0 +1,489 @@
+---
+title: "Chocolate Eye Tracking Analysis"
+author: "Pawel Bogdanowicz"
+date: "March 2016"
+output:  
+  html_document:  
+    keep_md: true 
+---
+
+Data collected as part of "Decisions about chocolate are
+processed differently than decisions on gambles: Evidence from eye-tracking" by Betty E. Kim-Viechnicki.
+
+* Kim-Viechnicki, B.E., Burla, Y., Feit, E., Plassmann, H.,& Kable, J.W. (2013, September). Decisions about chocolate are
+processed differently than decisions on gambles: Evidence from eye-tracking. Poster session at the annual meeting of the
+Society of Neuroeconomics, Lausanne, Switzerland.
+
+
+
+
+# Eye Tracking Conjoint Analysis
+
+
+While exploring the data set, we produced descriptive statistics and made graphics to visualize what the data was telling us.  In this section, we try to determine what the most important attributes are that influence a consumers purchasing decision. To do this, we use multinomial logistic regression (R's mlogit function).  
+
+#### Why multinomial logistic regression?
+Before getting into the analysis, it is necessary to differentiate between a multinomial analysis and a logistic regression.  In a logistic regression, we might ask the question, what factors influence whether a political candidate will win an election.  The response variable would be binary (1=wins 0=loses) and the independent variables could be hair color, hand size, and money raised.  In this case, a survey question would show one candidate at a time and the given attributes.
+
+But, if we were to give a survey and each question included two candidates and the respective attributes and asked the participant to chose their favorite, this would warrent a multinomial logistic regression.  This survey has two discrete, mutually exclusive choices.  Each trial gives the participant two choices, thus creating a relationship between the choices.  This relationship could not be measure in a logistic regression.
+
+
+
+### Analysis Contents
+  * Prepare the data
+  * Price linearity assumption
+  * Alternative pricing variable
+  * Number-of-levels Effect
+  * MLOGIT!
+  * Importance of mlogit intercept
+  * Choice shares
+  * Attribute Sensitivity
+  
+
+### Prep
+```{r  warning=FALSE , message=FALSE}
+library(mlogit)
+library(plotly)
+
+data <- as.data.frame(read.csv("http://goo.gl/GC1gRs"))
+
+data$brand <- as.factor(ifelse(data$B_Dove==1,"Dove",
+                     ifelse(data$B_Lindt==1,"Lindt",
+                            ifelse(data$B_Godiva==1,"Godiva",
+                                   ifelse(data$B_Ghirardelli==1,"Ghirardelli","Hershey")))))
+data$type <- as.factor(ifelse(data$T_MilkNuts==1,"MilkNuts",
+                    ifelse(data$T_Dark==1,"Dark",
+                           ifelse(data$T_DarkNuts==1,"DarkNuts",
+                                  ifelse(data$T_White==1,"White","Milk")))))
+```
+```{r warning=FALSE , message=FALSE , echo=FALSE}
+data$fprice <- as.factor(ave(data$Price , data$Trial , data$Ind , FUN = function(x) rank(x, ties.method = "first")))
+data.mlogit <- mlogit.data( data=data
+                            ,choice="Chosen"
+                            ,shape="long"
+                            ,varying=c("Price","brand","type","Brand_Fix","Type_Fix","Price_Fix,fprice")
+                            ,alt.levels=paste("pos",1:3)
+                            ,id.var="Ind")
+```
+
+
+
+### Checking Assumptions
+
+The basic assumptions of a conjoint analysis are:
+
+  * That the choices presented are made up of a collection of attributes.
+    + This is trivial to confirm as each choice has a brand, type, and price.
+  * The utility of the product is a function of the attributes.
+    + Although perhaps not exhaustive, it is safe to assume that the attributes used meet this assumption
+  * The utility of the product predicts behaviour
+    + As with the second assumption, it is safe to assume that the brand, type, and price can predict consumer behaviour.
+  
+
+### Price linearity assumption
+Another assumption of the multinomial logistic regression is that there is a linear relationship between the predictor and the proportion.  This assumption goes back to the idea that the utility of the product is a function of the attributes.  If we were to extrapolate this idea to the extremes, where, for instance, the prices for this experiment ranged from $0.50 to $100, we would have to assume that the purchase response would not be linear. This experiment could conclude that a $50 Hershey bar may not be such a bad idea.  Certainly, consumer response would dictate otherwise.  We would expect that after about $10.00 (considering only personal chocolates and not boxes of specialty chocolate) demand would sharply drop thus creating a nonlinear relationship between the price of the chocolate and the number chosen.
+
+Here, we try to determine whether Price has a linear relationship with the response variable.  The reason I determined it was important to investigate whether price is linear, is because of this histogram.
+```{r  warning=FALSE , message=FALSE , echo=FALSE}
+cPrice <- data.frame(xtabs(Chosen ~ Price , data=data))
+cPrice[,2] <- log(cPrice[,2])
+f <- list(
+  family = "Arial, sans",
+  size = 18,
+  color = "#7f7f7f"
+)
+x <- list(
+  title = "Price",
+  titlefont = f
+  ,tickvals = seq(0.5,4,0.1)
+)
+y <- list(
+  title = "Number Chosen",
+  titlefont = f
+)
+p <- plot_ly(
+  x = cPrice$Price
+  , y = cPrice$Freq
+  , type = "bar"
+) %>%
+layout(title = "Chosen by Price" , xaxis = x, yaxis = y)
+```
+
+<div>
+    <a href="https://plot.ly/~PawelMichal/116/" target="_blank" title="Chosen by Price" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/116.png" alt="Chosen by Price" style="max-width: 100%;width: 1000px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
+    <script data-plotly="PawelMichal:116"  src="https://plot.ly/embed.js" async></script>
+</div>
+
+There is a clear negative relationship between price and the number chosen.  However, it looks like the graph is significantly more dense between 0.5 and 2 than it is where price is greater than 2.  
+
+
+
+Using Chosen as the response variable would give us a count of the number of times the chocolate was chosen.  This may not be useful as the number of occurances are not necessarily equal.  Instead, Chosen is transformed into a rate.
+```{r  warning=FALSE , message=FALSE }
+d1 <- aggregate(data$Chosen , by=list(data$Price) , FUN=mean )
+colnames(d1) <- c("price","mean")
+
+ggplot(d1 , aes(x=d1$price,y=d1$mean)) +
+          geom_point() +
+          geom_smooth(method=lm)
+```    
+
+The above step created a new table d1 that has the prices and average number of times the price was chosen in a trial.  The graphic shows a scatter plot of the variables as well as a linear regression.  From this, we are not able to conclude that price in nonlinear.  
+
+Another way to visualize whether price is linear is to plot the residuals of the linear regression.  This will take the distance between the actual value and the predicted value and plot it for all prices.
+
+```{r  warning=FALSE , message=FALSE }
+# Run a linear regression
+lm1.lm <- lm(mean~price , data=d1)
+
+# Calculate the residuals
+lm1.res <- residuals(lm1.lm)
+
+
+x <- as.data.frame(matrix(rep(NA,72),nrow=36,ncol=2))
+colnames(x) <- c("price","residuals")
+x$price <- d1$price ; x$residuals <- residuals(lm1.lm)
+
+ggplot(x , aes(x=price,y=residuals)) +
+  geom_point() +
+  # geom_hline(yintercept=0)
+  geom_smooth(method=lm)
+```
+
+This graph leads me to believe that price is linear. As an aside, A1 in the appendix demonstrates the residual plot for data that is nonlinear.
+
+
+
+Another way we can test whether price is linear, is to include the squared term in the model along with the original and if the squared term is significant, then we would have reason to believe that price is nonlinear.
+
+
+Here, we run mlogit with price squared.
+```{r}
+data.testLinear <- data
+data.testLinear$priceSquared <- data.testLinear$Price^2
+data.testLinear <- mlogit.data( data=data.testLinear
+                            ,choice="Chosen"
+                            ,shape="long"
+                            ,varying=c("Price","brand","type","Brand_Fix","Type_Fix","Price_Fix","fprice","priceSquared")
+                            ,alt.levels=paste("pos",1:3)
+                            ,id.var="Ind")
+m.testLinear <- mlogit(Chosen ~ 0 + Price + priceSquared , data=data.testLinear)
+summary(m.testLinear)
+```
+
+This shows us that price squared is not significant, thus, we can conclude with a high degree of confidence that price does not have a nonlinear relationship with the response variable.
+
+
+
+
+#### Setting Price Bins
+
+Another approach to analyzing price is to transform it into a categorical variable with price bins.  The first way that comes to mind would be to divide the range by 3 (or how many bins are necessary) and to have each bin differentiated by that increment.  However, given the nature of the surveys it might lead to uninterpreble results.  For example, one trial might have prices as 0.5,0.6,2 whereas a different trial might have 2,2.5,4.  These two scenarios dramatize when $2 is either on the higher end or lower end of the available choices.  If $2 is chosen it would not always hold true that the $2 chocolate was chosen because of favorable pricing, but rather because it was the cheapest option.  The first experiment would conclude that given those choices, $2 is far too expensive. Although this would takeaway our ability to be able to understand discrete prices, it might give us insight into how a consumer makes the decision with available options.
+
+
+Considering this impact on choices, price was transformed into a rank of the available choices.  The cheapest option would be ranked 1, the middle option 2, and most expensive option as 3.
+
+```{r}
+data$fprice <- as.factor(ave(data$Price , data$Trial , data$Ind , FUN = function(x) rank(x, ties.method = "first")))
+```
+
+We can now test whether having price as categorical bins improves our model.
+```{r}
+m.fpr <- mlogit(Chosen ~ 0 + fprice + brand + type , data=data.mlogit)
+m.atr <- mlogit(Chosen ~ 0 + Price + brand + type , data=data.mlogit)
+summary(m.fpr)
+```
+
+The summary shows us that there is a significant relationship between the lowest available price and the highest available price where the highest priced option will typically be selected less often.  
+
+We test the two models to determine if price bins better describe the data.
+```{r}
+lrtest(m.fpr,m.atr)
+```
+The lrtest indicate that both models represent the model equally well.  
+
+
+
+
+### Number-of-levels Effect
+
+When deciding on the number of levels a conjoint analysis should have, it is important to cover the range of possibilities.  However, if we include many levels and reducing the number of occurances of each level, the "number-of-levels" effect may occur.  The number of levels effect states that "all else equal, attributes defined on more attributes tend to get more importance."  In other words, given a defined sample size, by having a large number of levels and minimizing the number of times a given level is tested, the model may not perform optimally.
+
+In this case, an alternative design that would reduce the number of levels would include prices 0.5 to 4 by intervals of 0.5.  
+
+
+
+
+
+### MLOGIT()
+
+
+
+
+
+The first step is to use mlogit.data() to get the data into either long or wide formal to be used in mlogit().  
+
+```{r}
+library(mlogit)
+
+data.mlogit <- mlogit.data( data=data
+                            ,choice="Chosen"
+                            ,shape="long"
+                            ,varying=c("Price","brand","type","Brand_Fix","Type_Fix","Price_Fix,fprice")
+                            ,alt.levels=paste("pos",1:3)
+                            ,id.var="Ind")
+```
+
+
+
+```{r}
+m.atr.int <- mlogit(Chosen ~ Price + brand + type , data=data.mlogit)
+summary(m.atr.int)
+```
+
+
+The results of the mlogit show the part worth estimates.  The estimate is listed for each level along with the standard error.  In the initial model, price is a continuous variable and the intercepts are included.  The results indicate that the most significant attributes and correponding levels are:
+
+Price
+
+  * Estimate of -0.31 indicates that as price goes up chosen rates decrease.
+    
+Brand
+
+  * Ghirardelli
+    + Estimate of 0.49 indicates that consumers preferred Ghirardelli over Dove
+  * Godiva
+    + Estimate of 0.52 indicates that consumers preferred Godiva over Dove
+  * Hershey
+    + Estimate of -0.45 indicates that consumers did not prefer Hershey over Dove
+  * Lindt
+    + An insignficiant result indicates that the model was not able to develop a significant correlation between Lindt and the response variable.
+    
+Type
+
+  * Milk Nuts
+    + Estimate of -0.54 indicates that consumers did not prefer MilkNuts over Dark Chocolate
+  * White
+    + Estimate of -1.74 indicates that consumers really did not prefer White over Dark Chocolate
+  * Dark Nuts / Milk
+    + An insignificant result indicates that the model was not able to develop a significant correlation between Dark Nuts or Milk and the response variable.
+
+
+
+### Importance of mlogit intercept
+
+#### Intercept considering attributes
+In the model above, the intercept was considered in the analysis.  This is interpretted as preference for the different positions in the model. For example, if "pos 2:(intercept)" was positively significant, it would indicate preference for the second (middle) position over the first (left) position.
+
+To test whether the intercept provides meaningful results, the model can be compared to one without the intercept.
+
+```{r}
+m.atr     <- mlogit(Chosen ~ 0 + Price + brand + type , data=data.mlogit)
+m.atr.int <- mlogit(Chosen ~     Price + brand + type , data=data.mlogit)
+
+lrtest(m.atr.int,m.atr)
+```
+
+lrtest uses the likelihood ratio test to compare the two models.  This result has a Pr(>Chisq) value of 0.31 which indicates that there is no significant difference between the two models.
+
+
+
+#### Intercept considering fixations
+
+We determined that the intercept is not significant with respect to the chocolate attributes.  To further test the idea of the intercept, we compare it with fixations.  
+
+
+```{r}
+m.fix.int <- mlogit(Chosen ~ Brand_Fix + Type_Fix + Price_Fix , data=data.mlogit)
+summary(m.fix.int)
+
+```
+
+The mlogit model with fixations provides insite on whether there is a relationship between the number of fixations on a specific chocolate's attribute and the response variable.  The estimates for this model are all positive and are all significant which indicates that the more an individual fixates on an chocolates attribute, the more likely they are to chose it.  In this model, it also shows that the position is significant.  Additionally, the estimate values also indicate that respondents preferred position 1 (left) over the other positions.
+
+
+Similarly, we test whether the model with the intercept is a better representation of the data than the model without the intercept.
+
+```{r}
+m.fix     <- mlogit(Chosen ~ 0 + Brand_Fix + Type_Fix + Price_Fix , data=data.mlogit)
+m.fix.int <- mlogit(Chosen ~ Brand_Fix + Type_Fix + Price_Fix , data=data.mlogit)
+
+lrtest(m.fix,m.fix.int)
+```
+
+The lrtest shows that there is a significant difference between the models and that the model with the intercept is a better representation of the data. As possible explainations for any preference for the left position, participants could be clicking through the survey on the left position, or the price could be lower for the left position than the others.  The pricing is investigate further in Appendix: A2.
+
+Because the attributes and fixations are not necessary independent of each other, the results of a model with both variables may not be interpretable.  Since the intercept is not significant with attributes, and because the position provides no actionable intelligence, any impact to decision influenced by the position is considered to be negligible.
+
+
+
+#### Having price as factor
+
+To further investigate the conjoint data, we explore the mlogit model having price as a factor instead of a continuous variable.
+
+
+```{r}
+m.pfac     <- mlogit(Chosen ~ 0 + as.factor(Price) + brand + type , data=data.mlogit)
+summary(m.pfac)
+```
+
+
+This model does not change the results that were obtained previous but it does provide inside on the price.  Changing price to a factor indicates that most of the price levels have responded negatively compared to chocolates at 0.5 and most are insignificant except for 3.1,3.2,3.6,3.9, and 4.0.
+
+
+
+### Choice shares
+
+Choice shares allow us to compare alternatives and predict the anticipated market share each alternative will obtian. For example, if we decide our product to be Hershey's Milk Chocolate priced at $2.00, and our competitors will carry their respective products, what will our market share be.  
+
+First, we prepare necessary functions and data.
+
+```{r}
+# predict.mnl from "R for Marketing Research and Analytics"
+
+predict.mnl <- function(model,data) {
+  # Function for predicting shares from a multinomial logit model
+  # model: mlogit object returned by mlogit()
+  #data: a data frame containing the set of designs for which you want to predict shares.  Same format as the data used to estimate model.
+  data.model <- model.matrix(update(model$formula, 0~ .), data=data)[,-1]
+  utility <- data.model%*%model$coef
+  share <- exp(utility)/sum(exp(utility))
+  cbind(share,data)
+}
+
+atr <- list(
+                  brand = c("Dove","Lindt","Godiva","Ghirardelli","Hershey")
+                , type = c("MilkNuts","Dark","DarkNuts","White","Milk")
+                , Price = c(seq(.5,4,.1))
+)
+
+m.atr <- mlogit(Chosen ~ 0 + Price + brand + type , data=data.mlogit)
+```
+
+
+
+For this function, we list which competitors we wish to include.  In the following chunks, select alternatives are chosen to compare the shares.  
+
+Share by chocolate type
+```{r}
+new.data <- expand.grid(atr)[c(400,380,385,390,395),]
+expand.grid(atr)[c(400,380,385,390,395),]
+p.mnl <- predict.mnl(m.atr,new.data)
+ggplot(p.mnl , aes(x=type , y=share)) +
+          geom_bar(stat = "identity")
+```
+
+Share by brand
+```{r}
+new.data <- expand.grid(atr)[c(400,398,399,396,397),]
+expand.grid(atr)[c(400,398,399,396,397),]
+p.mnl <- predict.mnl(m.atr,new.data)
+ggplot(p.mnl , aes(x=brand , y=share)) +
+          geom_bar(stat = "identity")
+``` 
+
+Share by competitors
+```{r}
+new.data <- expand.grid(atr)[c(400,633,764,346,502),]
+expand.grid(atr)[c(400,633,764,346,502),]
+p.mnl <- predict.mnl(m.atr,new.data)
+ggplot(p.mnl , aes(x=brand , y=share)) +
+          geom_bar(stat = "identity")
+``` 
+
+
+
+
+### Attribute Sensitivity
+
+Sensitivity analysis allows us to estimate how market share would change if changes were make to the product, given our data and competitors.  For example, if we wanted to explore making dark chocolate for the first time, what could we expect as an increase to market share. 
+
+For this analysis, fprice is used as the plot is more readable.
+
+```{r}
+m.atr <- mlogit(Chosen ~ 0 + fprice + brand + type , data=data.mlogit)
+
+# sensitivity.mnl from "R for Marketing Research and Analytics"
+sensitivity.mnl <- function(model,attrib,base.data,competitor.data) {
+  # Function for creating data for a share-sensitivity chart
+  # model: mlogit object returned by mlogit() function
+  # attrib: list of vectors with attribute levels to be used to sensitivity
+  # base.data: data frame containing baseline design of target producer
+  # competitor.data: data frame containing design of competitive set
+  
+  data <- rbind(base.data , competitor.data)
+  base.share <- predict.mnl(model , data)[1,1]
+  share <- NULL
+  for (a in seq_along(attrib)) {
+    for (i in attrib[[a]]) {
+      data[1,] <- base.data
+      data[1,a] <- i
+      share <- c(share , predict.mnl(model,data)[1,1])
+    }
+  }
+  data.frame(level=unlist(attrib),share=share,increase=share-base.share)
+}
+
+
+atr <- list(
+                  brand = c("Dove","Lindt","Godiva","Ghirardelli","Hershey")
+                , type = c("MilkNuts","Dark","DarkNuts","White","Milk")
+                , fprice = as.character(c(seq(1,3,1)))
+)
+
+# 63 is a good one
+
+base.data <- expand.grid(atr)[c(1),]
+competitor.data <- expand.grid(atr)[c(58,64,21,27,10),]
+tradeoff <- sensitivity.mnl(m.atr , atr , base.data , competitor.data)
+
+
+ggplot(tradeoff , aes(x=level , y=increase)) +
+            geom_bar(stat = "identity") +
+            labs(y="Change in Share for Baseline Product",x="Levels")
+
+
+```
+
+The plot above shows the sensitivity plot based on the baseline product Dove, MilkNuts, priced at the lower tier.
+
+```{r}
+expand.grid(atr)[c(1),]
+```
+
+The attributes of this product are evaluated against its competitors:
+```{r}
+expand.grid(atr)[c(58,64,21,27,10),]
+```
+
+From this plot we can see that if Dove were to change their product and instead offer milk chocolate, they should expect negative change in market share of approximately 20%.
+
+
+This next plot shows the sensitivity plot for one of the best available products (Godiva, Darknuts, $1).
+
+```{r}
+
+base.data <- expand.grid(atr)[c(13),]
+expand.grid(atr)[c(13),]
+competitor.data <- expand.grid(atr)[c(58,64,21,27,10),]
+tradeoff <- sensitivity.mnl(m.atr , atr , base.data , competitor.data)
+
+ggplot(tradeoff , aes(x=level , y=increase)) +
+            geom_bar(stat = "identity") +
+            labs(y="Change in Share for Baseline Product",x="Levels")
+```
+The results show that any change to the product will lead to a negative change in share.
+
+On the other hand, the following is a bad product where any chnage will result in a positive change in share.
+
+```{r}
+base.data <- expand.grid(atr)[c(74),]
+competitor.data <- expand.grid(atr)[c(58,64,21,27,10),]
+tradeoff <- sensitivity.mnl(m.atr , atr , base.data , competitor.data)
+
+ggplot(tradeoff , aes(x=level , y=increase)) +
+            geom_bar(stat = "identity") +
+            labs(y="Change in Share for Baseline Product",x="Levels")
+```
+
+
