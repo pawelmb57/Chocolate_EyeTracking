@@ -1,6 +1,4 @@
 # Chocolate Eye Tracking Summary
-Pawel Bogdanowicz  
-March 2016  
 
 Data collected as part of "Decisions about chocolate are
 processed differently than decisions on gambles: Evidence from eye-tracking" by Betty E. Kim-Viechnicki.
