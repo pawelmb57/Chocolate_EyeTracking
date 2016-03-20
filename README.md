@@ -1,4 +1,4 @@
-# Chocolate Eye Tracking Summary
+# Chocolate Preference Conjoint Analysis
 
 Data collected as part of "Decisions about chocolate are
 processed differently than decisions on gambles: Evidence from eye-tracking" by Betty E. Kim-Viechnicki.
