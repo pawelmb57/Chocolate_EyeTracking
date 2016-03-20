@@ -1,3 +1,9 @@
+### Contents
+ * [Summary](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary.md)
+ * [Exploring the data](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_exploring.md)
+ * [Multinomial Logistic Model](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis.md)
+ * [RShiny Visual Tool](https://pawelb.shinyapps.io/chocolate_slider/)
+
 # Exploring Conjoint Data 
 
 Data collected as part of "Decisions about chocolate are
@@ -336,6 +342,12 @@ plotly_POST(p, filename='chocolateEyeTracking/priceByTypeChosen.png')
 </div>
 
 
+
+### Contents
+ * [Summary](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary.md)
+ * [Exploring the data](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_exploring.md)
+ * [Multinomial Logistic Model](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis.md)
+ * [RShiny Visual Tool](https://pawelb.shinyapps.io/chocolate_slider/)
 
 
 
