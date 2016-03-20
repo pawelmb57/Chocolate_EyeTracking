@@ -778,3 +778,8 @@ ggplot(tradeoff , aes(x=level , y=increase)) +
 ![plot of chunk unnamed-chunk-24](Chocolate_Eye_Tracking_Analysis_files/figure-html/unnamed-chunk-24.png) 
 
 
+### Contents
+ * [Summary](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary.md)
+ * [Exploring the data](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_exploring.md)
+ * [Multinomial Logistic Model](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis.md)
+ * [RShiny Visual Tool](https://pawelb.shinyapps.io/chocolate_slider/)
