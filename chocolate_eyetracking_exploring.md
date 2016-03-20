@@ -35,13 +35,9 @@ Effects coding was used to distinguish between levels.  The following table show
   Brand  |     B_Dove   | B_Lindt |    B_Godiva   | B_Ghirardelli  
 ---------|--------------|---------|---------------|---------------
 Dove    |        1     |     0      |     0      |       0
-
 Lindt     |      0     |     1     |      0     |        0
-
 Godiva    |      0     |     0     |      1     |        0
-
 Ghirardelli  |   0     |     0     |      0     |        1
-
 Hershey     |    -1    |    -1    |      -1     |       -1
 
 
