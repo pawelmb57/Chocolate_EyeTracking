@@ -32,19 +32,17 @@ data <- as.data.frame(read.csv("http://goo.gl/GC1gRs"))
 
 Effects coding was used to distinguish between levels.  The following table shows the coding for five brands using four variables.  Although Hershey is not a variable in the dataset, it is accounted for by setting the four brand variables to -1.  
 
-------------------------------------------------------------------
-  Brand       B_Dove    B_Lindt     B_Godiva    B_Ghirardelli  
------------- -------- ----------   ----------  ---------------
-Dove            1          0           0             0
+  Brand  |     B_Dove   | B_Lindt |    B_Godiva   | B_Ghirardelli  
+---------|--------------|---------|---------------|---------------
+Dove    |        1     |     0      |     0      |       0
 
-Lindt           0          1           0             0
+Lindt     |      0     |     1     |      0     |        0
 
-Godiva          0          0           1             0
+Godiva    |      0     |     0     |      1     |        0
 
-Ghirardelli     0          0           0             1
+Ghirardelli  |   0     |     0     |      0     |        1
 
-Hershey         -1        -1          -1            -1
-------------------------------------------------------------------
+Hershey     |    -1    |    -1    |      -1     |       -1
 
 
 The same method is used to code the type of chocolate.
