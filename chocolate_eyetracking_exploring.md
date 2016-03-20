@@ -43,19 +43,15 @@ Hershey     |    -1    |    -1    |      -1     |       -1
 
 The same method is used to code the type of chocolate.
 
-------------------------------------------------------------------
-  Brand       T_MilkNuts    T_Dark    T_DarkNuts     T_White
------------- ------------ ---------- ------------  -----------
-MilkNuts         1          0           0             0
 
-Dark             0          1           0             0
+  Brand  |     T_MilkNuts |   T_Dark |   T_DarkNuts  |   T_White
+---------|----------------|----------|---------------|-------------
+MilkNuts    |     1         | 0|           0      |       0
+Dark      |       0        |  1 |          0     |        0
+DarkNuts   |      0       |   0  |         1    |         0
+White     |       0      |    0   |        0   |          1
+Milk       |     -1     |    -1    |      -1  |          -1
 
-DarkNuts         0          0           1             0
-
-White            0          0           0             1
-
-Milk            -1         -1          -1            -1
-------------------------------------------------------------------
 
 
 
