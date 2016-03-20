@@ -7,8 +7,6 @@ processed differently than decisions on gambles: Evidence from eye-tracking" by 
 processed differently than decisions on gambles: Evidence from eye-tracking. Poster session at the annual meeting of the
 Society of Neuroeconomics, Lausanne, Switzerland.
 
-# Exploring Conjoint Analysis Data
-
 This dataset contains the results of an experiment in which participants were asked to choose one of three chocolates that were displayed on a screen.  The information that was provided was the brand, type of chocolate, and the price.  Below is an example of the choice that was presented.  
 
 
