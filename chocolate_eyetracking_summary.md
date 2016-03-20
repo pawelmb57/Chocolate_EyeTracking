@@ -1,6 +1,4 @@
-# Chocolate Eye Tracking Summary
-Pawel Bogdanowicz  
-March 2016  
+# Conjoint Eyetracking Analysis
 
 Data collected as part of "Decisions about chocolate are
 processed differently than decisions on gambles: Evidence from eye-tracking" by Betty E. Kim-Viechnicki.
@@ -8,9 +6,6 @@ processed differently than decisions on gambles: Evidence from eye-tracking" by 
 * Kim-Viechnicki, B.E., Burla, Y., Feit, E., Plassmann, H.,& Kable, J.W. (2013, September). Decisions about chocolate are
 processed differently than decisions on gambles: Evidence from eye-tracking. Poster session at the annual meeting of the
 Society of Neuroeconomics, Lausanne, Switzerland.
-
-
-
 
 
 # Summary
