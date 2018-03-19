@@ -145,32 +145,6 @@ The following graphs visualize the variables and how many times each attribute w
 ## Chocolate Attributes
 
 
-```r
-cBrand <- data.frame(xtabs(Chosen ~ brand , data=data))
-
-f <- list(
-  family = "Arial, sans",
-  size = 18,
-  color = "#7f7f7f"
-)
-x <- list(
-  title = "Brand",
-  titlefont = f
-)
-y <- list(
-  title = "Number Chosen",
-  titlefont = f
-)
-
-p <- plot_ly(
-  x = cBrand$brand
-  , y = cBrand$Freq
-  , type = "bar"
-) %>%
-layout(title = "Chosen by Brand" , xaxis = x, yaxis = y)
-
-plotly_POST(p, filename='chocolateEyeTracking/chosenByBrand.png')
-```
 
 ![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/chosenByBrand.png.png)
 
@@ -199,122 +173,19 @@ Chosen by price shows that as price increases the number of times the chocolate 
 The following visualization shows a histogram of prices for both alternatives that were chosen and not chosen.  The difference in histogram clearly shows that less expensive chocolates (<$2) are chosen more frequently than more expensive chocolate.  FOr chocolates that are greater than $2, there is less seperation which indicates price has a different decision impact on more expensive chocolate than on less expensive chocolate.
 
 
-
-```r
-chosenPrices <- data$Price[which(data$Chosen==1)]
-notChosenPrices <- data$Price[which(data$Chosen==0)]
-x <- list(
-  title = "Pricing Bins",
-  titlefont = f
-)
-y <- list(
-  title = "Number Chosen",
-  titlefont = f
-)
-p <- plot_ly(x=chosenPrices , opacity = 0.6 , type = "histogram" , name="Chosen") %>%
-  add_trace(x=notChosenPrices , name="Not Chosen") %>%
-  layout(barmode="overlay",title="Chosen and Not Chosen Price Histograms")
-
-plotly_POST(p, filename='chocolateEyeTracking/priceByChosen.png')
-```
-
-```
-## No encoding supplied: defaulting to UTF-8.
-## Success! Created a new plotly here -> https://plot.ly/~PawelMichal/130
-```
-
 ![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/priceByChosen.png.png)
 
 
 ## Eye Tracking
 
 
-
-An aggregated and interactive visualization of fixations over the attributes is available here: (https://pawelb.shinyapps.io/chocolate_slider/) 
-
-
-
-
-
-```r
-cBrandFix <- data.frame(table(data$Brand_Fix,data$Chosen))
-cTypeFix <- data.frame(table(data$Type_Fix,data$Chosen))
-cPriceFix <- data.frame(table(data$Price_Fix,data$Chosen))
-
-
-x <- list(
-  title = "Brand_Fix",
-  titlefont = f
-)
-y <- list(
-  title = "Number Chosen",
-  titlefont = f
-)
-
-p <- plot_ly(
-  x = cBrandFix$Var1
-  , y = cBrandFix$Freq[which(cBrandFix$Var2==1)]
-  , opacity = 0.6
-  , type = "bar"
-  , name = "Brand"
-  ) %>%
-add_trace(x=cTypeFix$Var1
-          ,y=cTypeFix$Freq[which(cTypeFix$Var2==1)]
-          ,name="Type"
-          ) %>%
-add_trace(x=cPriceFix$Var1
-          ,y=cPriceFix$Freq[which(cPriceFix$Var2==1)]
-          ,name="Price"
-          )  %>%
-layout(barmode="stack" , title = "Chosen by Price_Fix" , xaxis = x, yaxis = y)
-
-
-
-plotly_POST(p, filename='chocolateEyeTracking/brandFix.png')
-```
-
-```
-## No encoding supplied: defaulting to UTF-8.
-## Success! Created a new plotly here -> https://plot.ly/~PawelMichal/132
-```
-
-![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/brandFix.png.png)
-
-#### So what?
-
 This graphic visualizes the relation between the attribute and the number of times the individual look at each.  The eye tracking data indicates how many times the individual looked at each attribute before making a decision.  The biggest difference between the attributes is the range of values on the x-axis.  Price ranges from 0 to 6 whereas brand and type are looked at more often with range between 0 and 25.  
 
 
-
-The following visual overlays two graphs that show how many chocolates were chosen and not chosen at given prices.  
-
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/brandFix.png.png)
 
 
-```r
-cBT <- xtabs(Chosen ~ brand + type , data=data)
 
-chosenPrices <- data$Price[which(data$Chosen==1)]
-notChosenPrices <- data$Price[which(data$Chosen==0)]
-
-P <- plot_ly(x=chosenPrices , opacity = 0.6 , type = "histogram" , name="Chosen") %>%
-  add_trace(x=notChosenPrices , name="Not Chosen") %>%
-  layout(barmode="overlay")
-
-plotly_POST(p, filename='chocolateEyeTracking/priceByTypeChosen.png')
-```
-
-```
-## No encoding supplied: defaulting to UTF-8.
-## Success! Created a new plotly here -> https://plot.ly/~PawelMichal/134
-```
-
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~PawelMichal/134.embed" width="800" frameBorder="0"></iframe>
-
-
-<div>
-    <a href="https://plot.ly/~PawelMichal/122/" target="_blank" title="Chosen by Price_Fix" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/122.png" alt="Chosen by Price_Fix" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:122"  src="https://plot.ly/embed.js" async></script>
-</div>
 
 
 
