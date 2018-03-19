@@ -2,7 +2,6 @@
  * [Summary](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/README.md)
  * [Exploring the data](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_exploring.md)
  * [Multinomial Logistic Model](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis.md)
- * [RShiny Visual Tool](https://pawelb.shinyapps.io/chocolate_slider/)
 
 # Exploring Conjoint Data 
 
@@ -188,14 +187,8 @@ This graphic visualizes the relation between the attribute and the number of tim
 
 
 
-
 ### Contents
- * [Summary](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary.md)
+ * [Summary](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/README.md)
  * [Exploring the data](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_exploring.md)
  * [Multinomial Logistic Model](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis.md)
- * [RShiny Visual Tool](https://pawelb.shinyapps.io/chocolate_slider/)
-
-
-
-
 
