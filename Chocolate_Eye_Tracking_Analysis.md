@@ -79,10 +79,7 @@ Another assumption of the multinomial logistic regression is that there is a lin
 Here, we try to determine whether Price has a linear relationship with the response variable.  The reason I determined it was important to investigate whether price is linear, is because of this histogram.
 
 
-<div>
-    <a href="https://plot.ly/~PawelMichal/116/" target="_blank" title="Chosen by Price" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/116.png" alt="Chosen by Price" style="max-width: 100%;width: 1000px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:116"  src="https://plot.ly/embed.js" async></script>
-</div>
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/priceByTypeChosen.png.png)
 
 There is a clear negative relationship between price and the number chosen.  However, it looks like the graph is significantly more dense between 0.5 and 2 than it is where price is greater than 2.  
 
