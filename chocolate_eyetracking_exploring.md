@@ -172,12 +172,8 @@ layout(title = "Chosen by Brand" , xaxis = x, yaxis = y)
 plotly_POST(p, filename='chocolateEyeTracking/chosenByBrand.png')
 ```
 
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~PawelMichal/124.embed" width="800" frameBorder="0"></iframe>
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/chosenByBrand.png.png)
 
-<div>
-    <a href="https://plot.ly/~PawelMichal/112/" target="_blank" title="Chosen by Brand" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/112.png" alt="Chosen by Brand" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:112"  src="https://plot.ly/embed.js" async></script>
-</div>
 
 
 
@@ -186,12 +182,7 @@ plotly_POST(p, filename='chocolateEyeTracking/chosenByBrand.png')
 Chosen by brand shows that Godiva gets chosen more frequently than other brands and Hershey is the least chosen.  However,it may be premature to conclude that Godiva is the best brand.  Without understanding the other attributes that were available in the trial, we may be mistaking correlation for causation.
 
   
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~PawelMichal/126.embed" width="800" frameBorder="0"></iframe>
-
-<div>
-    <a href="https://plot.ly/~PawelMichal/114/" target="_blank" title="Chosen by Type" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/114.png" alt="Chosen by Type" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:114"  src="https://plot.ly/embed.js" async></script>
-</div>
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/chosenByType.png.png)
 
 
 #### So what?
@@ -237,12 +228,7 @@ plotly_POST(p, filename='chocolateEyeTracking/priceByChosen.png')
 ## Success! Created a new plotly here -> https://plot.ly/~PawelMichal/130
 ```
 
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~PawelMichal/130.embed" width="800" frameBorder="0"></iframe>
-
-<div>
-    <a href="https://plot.ly/~PawelMichal/118/" target="_blank" title="Chosen and Not Chosen Price Histograms" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/118.png" alt="Chosen and Not Chosen Price Histograms" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:118"  src="https://plot.ly/embed.js" async></script>
-</div>
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/priceByChosen.png.png)
 
 
 ## Eye Tracking
