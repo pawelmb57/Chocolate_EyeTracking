@@ -16,7 +16,7 @@ Society of Neuroeconomics, Lausanne, Switzerland.
 This dataset contains the results of an experiment in which participants were asked to choose one of three chocolates that were displayed on a screen.  The information that was provided was the brand, type of chocolate, and the price.  Below is an example of the choice that was presented.  
 
 
-![Caption for the picture.](http://goo.gl/6lG43O)
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis_files/figure-html/img21.bmp)
 
 
 Each trial is a set of three choices given to a participant.  Each choice consists of three attributes including brand, type, and price.  Additional variables include the number of times the respondent fixated on any one of the attributes and whether the product was chosen.
