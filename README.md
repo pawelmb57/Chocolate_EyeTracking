@@ -35,34 +35,20 @@ Each trial had three alternatives to choose from consisting of a brand and type 
 
 #### Chocolate chosen by brand
 
-
-
-<div>
-    <a href="https://plot.ly/~PawelMichal/112/" target="_blank" title="Chosen by Brand" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/112.png" alt="Chosen by Brand" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:112"  src="https://plot.ly/embed.js" async></script>
-</div>
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/chosenByBrand.png.png)
 
 #### Chocolates chosen by type
 
-<div>
-    <a href="https://plot.ly/~PawelMichal/114/" target="_blank" title="Chosen by Type" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/114.png" alt="Chosen by Type" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:114"  src="https://plot.ly/embed.js" async></script>
-</div>
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/chosenByType.png.png)
+
 #### Chocolates that were chosen and not chosen by price
 
-<div>
-    <a href="https://plot.ly/~PawelMichal/118/" target="_blank" title="Chosen and Not Chosen Price Histograms" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/118.png" alt="Chosen and Not Chosen Price Histograms" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:118"  src="https://plot.ly/embed.js" async></script>
-</div>
+
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/priceByChosen.png.png)
+
 
 #### Fixations by attribute
-
-
-<div>
-    <a href="https://plot.ly/~PawelMichal/120/" target="_blank" title="Chosen by Price_Fix" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/120.png" alt="Chosen by Price_Fix" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:120"  src="https://plot.ly/embed.js" async></script>
-</div>
-
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/brandFix.png.png)
 
 
 ## Multinomial Logistic Model
