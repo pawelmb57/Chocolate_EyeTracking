@@ -190,12 +190,7 @@ Chosen by brand shows that Godiva gets chosen more frequently than other brands 
 Chosen by type reveals that people do not like white chocolate.  Out of the 350 chocolates that were chosen throughout the entire experiment, white chocolate was only picked 26 times.  The next least picked chocolate type is milk chocolate with nuts with 68 being picked.  Although we can see the stark difference in white chocolate, it seems that the other four types of chocolates are chosen at roughly the same frequency.
 
 
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~PawelMichal/128.embed" width="800" frameBorder="0"></iframe>
-
-<div>
-    <a href="https://plot.ly/~PawelMichal/116/" target="_blank" title="Chosen by Price" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/116.png" alt="Chosen by Price" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:116"  src="https://plot.ly/embed.js" async></script>
-</div>
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/priceByTypeChosen.png.png)
 
 #### So what?
 
@@ -283,13 +278,7 @@ plotly_POST(p, filename='chocolateEyeTracking/brandFix.png')
 ## Success! Created a new plotly here -> https://plot.ly/~PawelMichal/132
 ```
 
-<iframe height="600" id="igraph" scrolling="no" seamless="seamless" src="https://plot.ly/~PawelMichal/132.embed" width="800" frameBorder="0"></iframe>
-
-<div>
-    <a href="https://plot.ly/~PawelMichal/120/" target="_blank" title="Chosen by Price_Fix" style="display: block; text-align: center;"><img src="https://plot.ly/~PawelMichal/120.png" alt="Chosen by Price_Fix" style="max-width: 100%;width: 600px;"  width="600" onerror="this.onerror=null;this.src='https://plot.ly/404.png';" /></a>
-    <script data-plotly="PawelMichal:120"  src="https://plot.ly/embed.js" async></script>
-</div>
-
+![alt text](https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/chocolate_eyetracking_summary_files/figure-html/brandFix.png.png)
 
 #### So what?
 
