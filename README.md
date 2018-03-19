@@ -20,6 +20,7 @@ Society of Neuroeconomics, Lausanne, Switzerland.
 A conjoint analysis was conducted to help understand how consumers make choices regarding chocolate purchases.  Participants to a survey responded to questions such as the following:
 
 ![Caption for the picture.](http://goo.gl/6lG43O)
+(https://github.com/pawelmb57/Conjoint_Eyetracking_Analysis/blob/master/Chocolate_Eye_Tracking_Analysis_files/figure-html/img21.bmp)
 
 Each trial had three alternatives to choose from consisting of a brand and type of a chocolate and the corresponding price.  In addition to the type of chocolate, the number of times each respondent fixated over one of the attributes was recorded.  Using this data we are able to answer the question of what attributes of chocolate to consumers consider most important in their purchsing decision.
 
